@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lecture 2</title>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/week-three-controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+      <div ng-controller="WeekThreeController">
+        <h2>{{weekThreeTitle}}</h2>
+        <div ng-controller="ParentCtrl">
+    <h1>{{ title }}</h1>
+    <p>{{ description }}</p>
+    <div ng-controller="ChildCtrl">
+        <h1>{{ title }}</h1>
+        <input type="text" ng-model="$parent.description" />
+    </div>
+</div>
+    </div>
+    
+    <div ng-controller="MyCtrl">
+    <label>Search: <input ng-model="searchingFor"></label>
+    <table id="searchResults">
+      <tr>
+        <th>Age</th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Snippet</th>
+      </tr>
+      <tr ng-repeat="phone in phones | filter:searchingFor">
+      <th>{{phone.age}}</th>
+      <td>{{phone.id}}</td>
+      <td>{{phone.name}}</td> 
+      <td>{{phone.snippet}}</td>
+      </tr>
+    </table>
+  </div>
+</body>
+</html>
